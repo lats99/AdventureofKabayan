@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmih33sbbkrbk"
-path="res://.godot/imported/bg_ricefield3.png-93bea9249ce9af2e86112a848c52c165.ctex"
+uid="uid://btpo7tobaqndr"
+path="res://.godot/imported/NormalBullets.png-c0fa2ea0ba8e5d5ab2da9ecba0080a60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg_ricefield3.png"
-dest_files=["res://.godot/imported/bg_ricefield3.png-93bea9249ce9af2e86112a848c52c165.ctex"]
+source_file="res://assets/textures/NormalBullets.png"
+dest_files=["res://.godot/imported/NormalBullets.png-c0fa2ea0ba8e5d5ab2da9ecba0080a60.ctex"]
 
 [params]
 

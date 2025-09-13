@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4jkwtm3fvw4t"]
+
+[ext_resource type="Texture2D" uid="uid://b8hfalv5w5xfh" path="res://assets/textures/CharacterKabayanNormal.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://cds34ra5i6fqd" path="res://scripts/player.gd" id="1_g2els"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-23, -15, -17, -15, -17, -18, -22, -21, -24, -26, -25, -33, -22, -38, -17, -43, -8, -47, 0, -47, 10, -57, 17, -43, 21, -39, 25, -31, 24, -25, 19, -19, 14, -15, 21, -15, 23, -11, 23, 3, 21, 6, 18, 8, 18, 35, -19, 35, -19, 8, -24, 3, -24, -12)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -59)

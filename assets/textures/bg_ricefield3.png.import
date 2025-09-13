@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp5s3gyww4v7x"
-path="res://.godot/imported/bg_cloud2.png-63814e24d066d30db92f90661659127e.ctex"
+uid="uid://cmih33sbbkrbk"
+path="res://.godot/imported/bg_ricefield3.png-a6f3da87d0a004fd98dd9dac46284221.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg_cloud2.png"
-dest_files=["res://.godot/imported/bg_cloud2.png-63814e24d066d30db92f90661659127e.ctex"]
+source_file="res://assets/textures/bg_ricefield3.png"
+dest_files=["res://.godot/imported/bg_ricefield3.png-a6f3da87d0a004fd98dd9dac46284221.ctex"]
 
 [params]
 
