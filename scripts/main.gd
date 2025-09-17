@@ -1,9 +1,13 @@
 extends Node2D
 
 const SCROLL_SPEED : int = 25
+
 var player = null
+@export var enemy_scenes: Array[PackedScene] = []
 @onready var player_spawn_pos: Marker2D = $PlayerSpawnPos
 @onready var bullets_container: Node2D = $BulletsContainer
+@onready var enemy_container: Node2D = $EnemyContainer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,3 +28,9 @@ func _on_player_bullets_shot(bullets_scene: Variant, location: Variant) -> void:
 	var bullets = bullets_scene.instantiate()
 	bullets.global_position = location
 	bullets_container.add_child(bullets)
+
+
+func _on_enemy_spawn_timer_timeout() -> void:
+	var e = enemy_scenes.pick_random().instantiate()
+	e.global_position = Vector2(randf_range(50, 814), -50)
+	enemy_container.add_child(e)

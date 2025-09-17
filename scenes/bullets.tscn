@@ -7,6 +7,8 @@
 size = Vector2(4.5, 28)
 
 [node name="Bullets" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_atg88")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,4 +25,5 @@ shape = SubResource("RectangleShape2D_an5t8")
 position = Vector2(1, 5)
 scale = Vector2(0.3, 0.15)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

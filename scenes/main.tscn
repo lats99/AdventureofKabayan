@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv7td75mgxyav"]
+[gd_scene load_steps=8 format=3 uid="uid://dv7td75mgxyav"]
 
 [ext_resource type="Script" uid="uid://dcgeupljj4fhc" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cmih33sbbkrbk" path="res://assets/textures/bg_ricefield3.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bp5s3gyww4v7x" path="res://assets/textures/bg_cloud2.png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://d4jkwtm3fvw4t" path="res://scenes/player.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bv6ralo3qoiyi" path="res://scenes/enemy.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://di8rxrjsc1a46" path="res://scenes/med_enemy.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cce3fe67tn5lc" path="res://scenes/adv_enemy.tscn" id="7_o6xl0"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
+enemy_scenes = Array[PackedScene]([ExtResource("5_tbgi4"), ExtResource("6_tefeu"), ExtResource("7_o6xl0")])
 
 [node name="Player" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(409, 630)
@@ -34,4 +38,10 @@ offset = Vector2(432, 384)
 
 [node name="BulletsContainer" type="Node2D" parent="."]
 
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="bullets_shot" from="Player" to="." method="_on_player_bullets_shot"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

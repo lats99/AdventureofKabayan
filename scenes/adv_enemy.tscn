@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cce3fe67tn5lc"]
+
+[ext_resource type="Texture2D" uid="uid://vvudkyoufxvc" path="res://assets/textures/AdvanceDrones.png" id="1_8xbnu"]
+[ext_resource type="Script" uid="uid://cub0jti6wjqk3" path="res://scripts/adv_enemy.gd" id="1_mr0vp"]
+
+[node name="AdvEnemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_mr0vp")
+speed = 300
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_8xbnu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-26, -33, -28, -30, -28, -24, -20, -11, -40, -11, -12, 3, -8, 11, -17, 11, 0, 31, 16, 11, 8, 11, 13, 2, 38, -11, 19, -11, 28, -27, 27, -32, 25, -34, 11, -23, 0, -32, -11, -24)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -55)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

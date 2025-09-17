@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv6ralo3qoiyi"]
+
+[ext_resource type="Texture2D" uid="uid://bgdqxvc7xlaxw" path="res://assets/textures/RegularDrone.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://c1l6r37o86nkj" path="res://scripts/enemy.gd" id="1_md0e3"]
+
+[node name="Enemy" type="Area2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -23, -11, -3, -5, 17, -7, 26, 7, 26, 5, 17, 11, -1, 7, -23)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -50)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
