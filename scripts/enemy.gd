@@ -1,7 +1,10 @@
 class_name Enemy extends Area2D
 
-@export var speed = 150
-@export var hp = 1
+signal killed(points)
+
+var speed = 150
+var hp = 1
+var points = 100
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,5 +28,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func take_damage(amount):
 	hp -= amount
 	if hp <= 0:
+		killed.emit(points)
 		die()
 	

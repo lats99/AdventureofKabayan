@@ -1,7 +1,10 @@
 class_name MedEnemy extends Area2D
 
-@export var speed = 150
-@export var hp = 2
+signal killed(points)
+
+var speed = 225
+var hp = 2
+var points = 200
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,4 +27,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func take_damage(amount):
 	hp -= amount
 	if hp <= 0:
+		killed.emit(points)
 		die()

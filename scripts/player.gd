@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 signal bullets_shot (bullets_scene, location)
+signal killed
 
 @export var speed = 300
 var bullets_scene = preload("res://scenes/bullets.tscn")
@@ -22,8 +23,11 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	move_and_slide()
 	
+	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	
 func shoot():
 	bullets_shot.emit(bullets_scene, muzzle.global_position)
 	
 func die():
+	killed.emit()
 	queue_free()
