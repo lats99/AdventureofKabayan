@@ -1,0 +1,193 @@
+[gd_scene load_steps=10 format=3 uid="uid://81yfghna7530"]
+
+[ext_resource type="Script" uid="uid://coq3sff8lm3p5" path="res://scripts/pause_menu.gd" id="1_7l7mv"]
+[ext_resource type="FontFile" uid="uid://bn78wnrbscgvl" path="res://assets/textures/Kenney Future Square.ttf" id="2_v4r4p"]
+[ext_resource type="Texture2D" uid="uid://b3b7olwso7ptj" path="res://assets/textures/SoundIcons.png" id="3_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://c1qfwld5iijvc" path="res://assets/textures/MuteIcons.png" id="4_88e76"]
+[ext_resource type="Script" uid="uid://c1nso8o2lpv00" path="res://scenes/sound.gd" id="5_knqa7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71k7c"]
+bg_color = Color(0.827451, 0.643137, 0.411765, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.576471, 0.156863, 0.105882, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_cmnsq"]
+font = ExtResource("2_v4r4p")
+font_size = 45
+font_color = Color(0.647059, 0.447059, 0.2, 1)
+outline_size = 10
+outline_color = Color(0.576471, 0.156863, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofnjo"]
+bg_color = Color(0.576471, 0.156863, 0.105882, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rgno"]
+font = ExtResource("2_v4r4p")
+font_size = 30
+font_color = Color(0.647059, 0.447059, 0.2, 1)
+outline_size = 7
+outline_color = Color(0.576471, 0.156863, 0.105882, 1)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7l7mv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.270588)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -201.0
+offset_right = 224.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_71k7c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 30.0
+offset_right = 84.0
+offset_bottom = 82.0
+grow_horizontal = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_cmnsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="Panel"]
+layout_mode = 2
+offset_left = 144.0
+offset_top = 127.0
+offset_right = 304.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.647059, 0.447059, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_v4r4p")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ofnjo")
+text = "REsume"
+metadata/_edit_use_anchors_ = true
+
+[node name="Retry" type="Button" parent="Panel"]
+layout_mode = 2
+anchor_top = 0.0970149
+anchor_bottom = 0.0970149
+offset_left = 144.0
+offset_top = 127.0
+offset_right = 304.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.647059, 0.447059, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_v4r4p")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ofnjo")
+text = "retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Button" parent="Panel"]
+layout_mode = 2
+anchor_top = 0.191542
+anchor_bottom = 0.191542
+offset_left = 144.0
+offset_top = 127.0
+offset_right = 304.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.647059, 0.447059, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_v4r4p")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ofnjo")
+text = "main menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 2
+anchor_left = 0.00223214
+anchor_top = 0.288557
+anchor_right = 0.00223214
+anchor_bottom = 0.288557
+offset_left = 144.0
+offset_top = 127.0
+offset_right = 304.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.647059, 0.447059, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_v4r4p")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_ofnjo")
+text = "quit"
+metadata/_edit_use_anchors_ = true
+
+[node name="SoundLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285714
+anchor_top = 0.902985
+anchor_right = 0.285714
+anchor_bottom = 0.902985
+offset_left = -56.0
+offset_top = -45.0
+offset_right = 56.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sound"
+label_settings = SubResource("LabelSettings_1rgno")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sound" type="TextureButton" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 312.0
+offset_right = -110.0
+offset_bottom = 362.0
+grow_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource("3_1s2dm")
+script = ExtResource("5_knqa7")
+icon_mode_sound = ExtResource("3_1s2dm")
+icon_mode_mute = ExtResource("4_88e76")
+
+[connection signal="pressed" from="Panel/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="Panel/Sound" to="." method="_on_sound_toggled"]

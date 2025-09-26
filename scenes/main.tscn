@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv7td75mgxyav"]
+[gd_scene load_steps=12 format=3 uid="uid://dv7td75mgxyav"]
 
 [ext_resource type="Script" uid="uid://dcgeupljj4fhc" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cmih33sbbkrbk" path="res://assets/textures/bg_ricefield3.png" id="2_0xm2m"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cce3fe67tn5lc" path="res://scenes/adv_enemy.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cipowub5xjycw" path="res://scenes/hud.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://beqo5jfbbogyq" path="res://scenes/game_over.tscn" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://dketmi15qmdli" path="res://assets/textures/sound-bamboo-clic-mouse-176192.mp3" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://81yfghna7530" path="res://scenes/pause_menu.tscn" id="10_ya4ey"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -50,6 +52,11 @@ autostart = true
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("8_tipki")]
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("9_85g3d")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ya4ey")]
+
+[node name="BulletSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_choun")
 
 [connection signal="bullets_shot" from="Player" to="." method="_on_player_bullets_shot"]
 [connection signal="killed" from="Player" to="." method="_on_player_killed"]

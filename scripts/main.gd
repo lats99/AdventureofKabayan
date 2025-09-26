@@ -9,6 +9,8 @@ const SCROLL_SPEED : int = 25
 @onready var hud: Control = $CanvasLayer/HUD
 @onready var game_over: Control = $CanvasLayer/GameOver
 @onready var parallax_background: ParallaxBackground = $ParallaxBackground
+@onready var bullet_sfx: AudioStreamPlayer = $BulletSfx
+@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 var player = null
 var score := 0:
@@ -29,7 +31,9 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	assert(player!=null)
 	player.global_position = player_spawn_pos.global_position
-	game_over.visible=false
+	game_over.hide()
+	pause_menu.hide()
+	
 
 func save_game():
 	var save_file = FileAccess.open("user://KabayanJetpackSave.data", FileAccess.WRITE)
@@ -38,14 +42,15 @@ func save_game():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	parallax_background.scroll_offset.y += SCROLL_SPEED * delta
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("pause"):
+		pause_menu.show()
 	elif Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 
 func _on_player_bullets_shot(bullets_scene: Variant, location: Variant) -> void:
 	var bullets = bullets_scene.instantiate()
 	bullets.global_position = location
+	bullet_sfx.play()
 	bullets_container.add_child(bullets)
 
 func _on_enemy_spawn_timer_timeout() -> void:
@@ -58,7 +63,6 @@ func _on_enemy_killed(points):
 	score += points
 	if score > high_score:
 		high_score = score
-	print(score)
 	
 func _on_player_killed() -> void:
 	game_over.set_score(score)
